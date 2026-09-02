@@ -1,16 +1,26 @@
-# React + Vite
+# Landing B2B — Canal Digital Autovenz
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Landing page para captar talleres, almacenes automotrices y flotas, y convertirlos en clientes del canal de venta digital corporativo de Autovenz.
 
-Currently, two official plugins are available:
+## Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Vite + React
+- Tailwind CSS v4
+- lucide-react (íconos)
 
-## React Compiler
+## Correr en local
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```
+npm install
+npm run dev
+```
 
-## Expanding the Oxlint configuration
+## Pendientes
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+- [ ] **Número de WhatsApp real** — `src/config.js` tiene un placeholder (`573000000000`).
+- [ ] **Videos reales** del "Manifiesto VIP" y "Operación Reloj Suizo" — hoy el modal muestra "Video próximamente" (`VipVideo.jsx`, `OperationProcess.jsx`).
+- [ ] **Fotos reales** de producto/almacén — hoy se usan imágenes de stock de Unsplash (Hero, OperationProcess, VipVideo).
+- [ ] **Verificar contenido de las respuestas de FAQ** — montos y condiciones de crédito redactados provisionalmente, confirmar con el negocio (`FAQ.jsx`).
+- [ ] **Botón "Hablar con un asesor corporativo"** — hoy apunta a `href="#"`, falta decidir si es `mailto:` o WhatsApp también.
+- [ ] **Revisar responsive** en mobile/tablet real.
+- [ ] **Dominio/hosting** donde se publicará el sitio.
