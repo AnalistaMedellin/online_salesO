@@ -3,7 +3,7 @@ import { Star,ChevronLeft, ChevronRight,User } from "lucide-react";
 
 const testimonials = [
     {
-        quote:"Desde que compré por el canal directo de Autovenz, mis márgenes cambiaron. Entrar a la Comunidad VIP y aprovechar el 50% de descuento de contado en packs de suspensión me permitió capitalizar mi mostrador mucho más rápido.",
+        quote:"Desde que compré por el canal directo de Autovenz, mis márgenes cambiaron. Entrar a la Comunidad VIP y aprovechar los descuentos de contado en packs de suspensión me permitió capitalizar mi mostrador mucho más rápido.",
         author: "Almacén Automotriz, Medellín",
         rating: 5
     },
@@ -14,7 +14,7 @@ const testimonials = [
         rating: 5
     },
     {
-        quote: "La atención por WhatsApp es ágil. Mi asesor me avisa de las ofertas relámpago y armamos pedidos mezclando línea nueva con los lotes VIP. Es un proveedor que se preocupa por mi rentabilidad.",
+        quote: "La atención por WhatsApp es ágil. Mi asesor me avisa de las ofertas relámpago y me ayuda a armar el pedido que mejor le conviene a mi mostrador. Es un proveedor que se preocupa por mi rentabilidad.",
         author: "Taller Mecánico",
     },
 ];

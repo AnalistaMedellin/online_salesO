@@ -20,7 +20,7 @@ const features = [
 {
     icon: Shuffle,
     title: "Venta cruzada inteligente",
-    description: "Combina línea nueva con lotes VIP para maximizar tu margen por factura.",
+    description: "Combina distintas líneas de producto en un mismo pedido para maximizar tu margen por factura.",
 },
 ];
 
