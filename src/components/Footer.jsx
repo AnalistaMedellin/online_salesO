@@ -1,10 +1,22 @@
 import { ShieldCheck, Award, Headset } from "lucide-react";
 import autovenzLogo from "../assets/AutoVenz_Logotipo-for-Dark.svg";
+import InstagramIcon from "./icons/InstagramIcon";
+import FacebookIcon from "./icons/FacebookIcon";
+import GoogleIcon from "./icons/GoogleIcon";
+import WhatsAppIcon from "./icons/WhatsAppIcon";
+import { WHATSAPP_NUMBER, WHATSAPP_MESSAGE } from "../config";
 
 const badges = [
   { icon: ShieldCheck, text: "CALIDAD GARANTIZADA" },
   { icon: Award, text: "MARCAS LÍDERES" },
   { icon: Headset, text: "SOPORTE DEDICADO" },
+];
+
+const socialLinks = [
+  { icon: InstagramIcon, href: "https://www.instagram.com/autovenz?igsi=MTl0YWE3bWZsNDJuYg%3D%3D", label: "Instagram" },
+  { icon: FacebookIcon, href: "https://www.facebook.com/share/1Bpqtea6r3/", label: "Facebook" },
+  { icon: GoogleIcon, href: "https://share.google/tgP7MHBZEudOGB2tI", label: "Google" },
+  { icon: WhatsAppIcon, href: `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`, label: "WhatsApp" },
 ];
 
 function Footer() {
@@ -26,6 +38,21 @@ function Footer() {
               <badge.icon size={16} strokeWidth={1.7} className="text-[#C9A227]" />
               {badge.text}
             </div>
+          ))}
+        </div>
+
+        <div className="mt-8 flex items-center justify-center gap-4">
+          {socialLinks.map((social) => (
+            <a
+              key={social.label}
+              href={social.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={social.label}
+              className="flex items-center justify-center w-9 h-9 border border-white/[0.08] rounded-sm text-[#A0A0A8] transition-colors duration-200 hover:border-[#C9A227]/40 hover:text-[#C9A227]"
+            >
+              <social.icon className="w-4 h-4" />
+            </a>
           ))}
         </div>
 
