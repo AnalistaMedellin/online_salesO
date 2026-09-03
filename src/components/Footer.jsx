@@ -11,20 +11,27 @@ function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="bg-[#0A0A0C] border-t border-[#2E2E33] px-6 py-12">
+    <footer className="bg-[#0A0A0C] px-6 py-10 sm:py-12">
       <div className="max-w-[1280px] mx-auto text-center">
-        <img src={autovenzLogo} alt="Autovenz — Repuestos que mueven tu negocio" className="h-10 mx-auto" />
+        <img src={autovenzLogo} alt="Autovenz — Repuestos que mueven tu negocio" className="h-9 mx-auto" />
 
-        <div className="mt-8 flex flex-wrap items-center justify-center gap-8">
-          {badges.map((badge) => (
-            <div key={badge.text} className="flex items-center gap-2 text-sm text-[#A0A0A8]">
-              <badge.icon size={18} className="text-[#8B5CF6]" />
+        <div className="mt-8 grid grid-cols-2 sm:flex sm:flex-wrap items-center justify-center gap-x-6 gap-y-4 sm:gap-10">
+          {badges.map((badge, index) => (
+            <div
+              key={badge.text}
+              className={`flex items-center justify-center gap-2 text-xs sm:text-sm text-[#A0A0A8] ${
+                index === 2 ? "col-span-2" : ""
+              }`}
+            >
+              <badge.icon size={16} strokeWidth={1.7} className="text-[#C9A227]" />
               {badge.text}
             </div>
           ))}
         </div>
 
-        <p className="mt-8 text-xs text-[#A0A0A8]">
+        <div className="mt-8 w-10 h-px bg-white/[0.08] mx-auto" />
+
+        <p className="mt-6 text-xs text-[#8F8F98]">
           © {year} Autovenz. Todos los derechos reservados.
         </p>
       </div>

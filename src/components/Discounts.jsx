@@ -19,53 +19,61 @@ const tiers = [
         discounts: ["25% PAGANDO A CREDITO", "30% PAGANDO A CONTADO"],
 
     },
-
-    {
-        number: "03",
-        icon: Crown,
-        title: "COMUNIDAD VIP",
-        description: "Lotes estrategicos, clientes vinclulado a comunidad VIP, con beneficios exclusivos.",
-        discounts: ["40% A 30 DÍAS DE CRÉDITO", "50% DE CONTADO"],
-        locked: true,
-    },
 ];
 
 function Discounts() {
     return (
-        <section id="descuentos" className="bg-[#121214] px-6 py-16">
+        <section id="descuentos" className="bg-[#121214] px-6 py-10 sm:py-14 lg:py-16">
             <div className="max-w-[1280px] mx-auto">
-                <h2 className="text-3xl font-black uppercase text-center">
-                    ESTRUCTURA DE DESCUENTOS POR <span className="text-[#8B5BF6]">NIVELES</span>
+                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black uppercase text-center">
+                    MÁS COMPRAS, <span className="text-[#C9A227]">MÁS RENTABILIDAD</span>
                 </h2>
                 <p className="mt-2 text-center text-[#A0A0A8]">
-                    ENTRA FÁCIL,MEJORA EN CADA COMPRA
+                    BENEFICIOS QUE CRECEN CON CADA COMPRA
                 </p>
 
-            <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-6">
                 {tiers.map((tier) => (
-                    <div key={tier.number} className="bg-[#1A1A1D] border border-[#2E2E33] rounded-lg p-6">
-                        <span className="text-[#8B5CF6] font-bold">{tier.number}</span>
-                        <tier.icon size={28} className="text-white mt-2"/>
-                        <h3 className="mt-3 font-bold uppercase">{tier.title}</h3>
-                        <p className="mt-2 text-sm text-[#A0A0A8]">{tier.description}</p>
-                        <div className="mt-4 space-y-1">
+                    <div key={tier.number} className="bg-[#1A1A1D] border border-[#2E2E33] rounded-lg p-5 text-center">
+                        <tier.icon size={22} className="mx-auto text-white" />
+                        <h3 className="mt-2 text-sm font-bold uppercase">{tier.title}</h3>
+                        <p className="mt-1.5 text-xs text-[#A0A0A8]">{tier.description}</p>
+                        <div className="mt-3 space-y-1">
                             {tier.locked ? (
-                                <div className="flex items-center gap-2 text-[#A0A0A8]">
-                                    <Lock size={20} />
-                                    <span className="font-bold">DESCUENTOS BLOQUEADOS</span>
+                                <div className="flex items-center justify-center gap-2 text-[#A0A0A8]">
+                                    <Lock size={16} />
+                                    <span className="text-sm font-bold">DESCUENTOS BLOQUEADOS</span>
                                 </div>
                             ) : (
-                                tier.discounts.map((d) => (
-                                    <p key={d} className="text-2xl font-black text-[#F3C969]">{d}</p>
-                                ))
+                                tier.discounts.map((d) => {
+                                    const match = d.match(/^(\d+%)\s*(.*)$/);
+                                    return (
+                                        <p key={d} className="text-sm font-bold text-white">
+                                            {match ? (
+                                                <>
+                                                    <span className="text-xl font-black text-[#F3C969]">{match[1]}</span>{" "}
+                                                    {match[2]}
+                                                </>
+                                            ) : (
+                                                d
+                                            )}
+                                        </p>
+                                    );
+                                })
                             )}
                         </div>
                     </div>
                 ))}
-                    <div className = "bg-gradient-to-b from-[#1A1A1D] to-black border border-[#D4A94B] rounded-xl p-6 flex flex-col items-center justify-center text-center">
-                        <Crown size={32} className="text-[#F3C969]" />
-                        <h3 className="mt-3 text-3xl font-black text-[#F3C969]">VIP</h3>
-                        <p className="mt-2 text-sm text-[#A0A0A8]">BENEFICIOS EXCLUSIVOS PARA QUIENES QUIEREN MÁS RENTABILIDAD.</p>
+                    <div className="bg-gradient-to-b from-[#1A1A1D] to-black border border-[#D4A94B] rounded-xl p-5 flex flex-col items-center justify-center text-center">
+                        <Crown size={22} className="text-[#F3C969]" />
+                        <h3 className="mt-2 text-lg font-black text-[#F3C969]">COMUNIDAD VIP</h3>
+                        <p className="mt-1.5 text-xs text-[#A0A0A8]">
+                            Lotes estratégicos, clientes vinculados a la comunidad VIP, con beneficios exclusivos.
+                        </p>
+                        <div className="mt-3 flex items-center justify-center gap-2 text-[#A0A0A8]">
+                            <Lock size={16} />
+                            <span className="text-sm font-bold">DESCUENTOS BLOQUEADOS</span>
+                        </div>
                     </div>
             </div>
             </div>

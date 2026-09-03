@@ -18,28 +18,53 @@ function FAQ() {
   };
 
   return (
-    <section id="preguntas-frecuentes" className="bg-[#0A0A0C] px-6 py-16">
-      <div className="max-w-[1280px] mx-auto">
-        <h2 className="text-3xl font-black uppercase text-center">
-          PREGUNTAS <span className="text-[#8B5CF6]">FRECUENTES</span>
-        </h2>
+    <section id="preguntas-frecuentes" className="bg-[#0A0A0C] px-5 sm:px-6 py-10 sm:py-14 lg:py-16">
+      <div className="max-w-[760px] mx-auto">
 
-        <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-4">
+        {/* Encabezado */}
+        <div className="flex flex-col items-center text-center mb-8 sm:mb-10">
+          <div className="flex items-center gap-3 mb-4">
+            <span className="w-10 h-[2px] bg-[#C9A227]" />
+            <span className="text-[10px] sm:text-xs font-bold tracking-[0.18em] text-[#C9A227]">
+              INFORMACIÓN Y AYUDA
+            </span>
+            <span className="w-10 h-[2px] bg-[#C9A227]" />
+          </div>
+
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black uppercase tracking-[-0.02em] text-white">
+            PREGUNTAS <span className="text-[#C9A227]">FRECUENTES</span>
+          </h2>
+        </div>
+
+        {/* Acordeón */}
+        <div className="flex flex-col gap-2.5">
           {faqs.map((faq, index) => {
             const isOpen = openIndex === index;
 
             return (
-              <div key={faq.question} className="bg-[#1A1A1D] border border-[#2E2E33] rounded-lg p-5">
+              <div
+                key={faq.question}
+                className={`bg-[#0D0D10] border rounded-sm transition-colors duration-200 ${
+                  isOpen ? "border-[#5B108B]/50" : "border-white/[0.08]"
+                }`}
+              >
                 <button
                   onClick={() => toggleFaq(index)}
-                  className="w-full flex items-center justify-between gap-4 text-left font-bold"
+                  className="w-full flex items-center justify-between gap-4 text-left px-4 py-3.5 sm:px-5 sm:py-4"
                 >
-                  <span>{faq.question}</span>
-                  {isOpen ? <Minus size={20} className="shrink-0" /> : <Plus size={20} className="shrink-0" />}
+                  <span className="text-sm sm:text-base font-bold text-white">{faq.question}</span>
+                  {isOpen ? (
+                    <Minus size={16} strokeWidth={2} className="shrink-0 text-[#C9A227]" />
+                  ) : (
+                    <Plus size={16} strokeWidth={2} className="shrink-0 text-[#C9A227]" />
+                  )}
                 </button>
 
                 {isOpen && (
-                  <p className="mt-3 text-sm text-[#A0A0A8]">{faq.answer}</p>
+                  <div className="px-4 pb-4 sm:px-5 sm:pb-4">
+                    <div className="w-6 h-[2px] bg-[#5B108B] mb-3" />
+                    <p className="text-sm leading-6 text-[#A0A0A8]">{faq.answer}</p>
+                  </div>
                 )}
               </div>
             );

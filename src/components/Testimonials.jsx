@@ -8,7 +8,7 @@ const testimonials = [
         rating: 5
     },
     {
-    
+
         quote: "La logística es impecable. Hacemos pedidos superiores a $1.500.000 COP, nos aplican el descuento de recompra del 30%, y los repuestos de línea pesada llegan sin demoras.",
         author: "Flota de Transporte de Carga",
         rating: 5
@@ -33,31 +33,72 @@ function Testimonials() {
 const current = testimonials[activeIndex];
 
 return (
-    <section id="testimonios" className="bg-[#0A0A0C] px-6 py-16">
-        <div className="max-w-[1280px] mx-auto">
-            <h2 className="text-3xl font-black uppercase text-center">
-                NUESTROS CLIENTES <span className="text-[#8B5CF6]">HABLAN</span>
-            </h2>
-            <div className="mt-10 flex items-center justify-center gap-2 sm:gap-4">
-                <button onClick={goPrev} className="shrink-0 text-[#A0A0A8] hover:text-white">
-                    <ChevronLeft className="w-7 h-7 sm:w-8 sm:h-8" />
+    <section id="testimonios" className="bg-[#0A0A0C] px-5 sm:px-6 pt-4 pb-10 sm:pt-8 sm:pb-14 lg:pt-10 lg:pb-16">
+        <div className="max-w-[1100px] mx-auto">
+
+            {/* Encabezado */}
+            <div className="max-w-2xl mb-8 sm:mb-10">
+                <div className="flex items-center gap-3 mb-4">
+                    <span className="w-10 h-[2px] bg-[#C9A227]" />
+                    <span className="text-[10px] sm:text-xs font-bold tracking-[0.18em] text-[#C9A227]">
+                        EXPERIENCIAS REALES
+                    </span>
+                </div>
+
+                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black uppercase tracking-[-0.02em] leading-[0.95] text-white">
+                    NUESTROS CLIENTES <span className="text-[#C9A227]">HABLAN</span>
+                </h2>
+            </div>
+
+            {/* Carrusel */}
+            <div className="flex items-center justify-center gap-3 sm:gap-6">
+                <button
+                    onClick={goPrev}
+                    aria-label="Testimonio anterior"
+                    className="shrink-0 flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 border border-white/[0.12] text-[#8F8F98] transition-colors duration-300 hover:border-[#C9A227]/40 hover:text-[#C9A227]"
+                >
+                    <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5" strokeWidth={1.7} />
                 </button>
-                <div className="max-w-xl bg-[#1A1A1D] border border-[#2E2E33] rounded-xl p-5 sm:p-8 text-center">
-                    <div className="flex justify-center gap-1 text-[#F3C969]">
+
+                <div className="relative w-full max-w-xl border border-[#5B108B]/40 bg-[#0D0D10] p-6 sm:p-10">
+                    {/* Línea de acento */}
+                    <div className="absolute top-0 left-0 w-10 sm:w-14 h-[2px] bg-[#C9A227]" />
+
+                    {/* Número técnico */}
+                    <span className="absolute top-3 right-4 sm:top-6 sm:right-6 text-[9px] sm:text-[10px] font-bold tracking-[0.15em] text-white/[0.2]">
+                        0{activeIndex + 1} / 0{testimonials.length}
+                    </span>
+
+                    <div className="flex justify-center gap-1 text-[#C9A227]">
                         {[1, 2, 3, 4, 5].map((n) => (
-                            <Star key={n} size={16} fill="currentColor" />
+                            <Star key={n} size={14} fill="currentColor" strokeWidth={0} />
                         ))}
                     </div>
-                    <p className="mt-4 text-[#A0A0A8] italic">"{current.quote}"</p>
-                    <div className="mt-6 flex flex-col items-center gap-2">
-                        <User size={32} className="text-[#8B5CF6]" />
-                        <span className="font-bold">{current.author}</span>
+
+                    <p className="mt-5 sm:mt-6 text-center text-sm sm:text-lg leading-6 sm:leading-8 italic text-[#D4D4D9]">
+                        "{current.quote}"
+                    </p>
+
+                    <div className="mt-7 sm:mt-8 flex flex-col items-center gap-2.5">
+                        <span className="w-8 h-[1px] bg-[#5B108B]" />
+                        <div className="flex items-center gap-2">
+                            <User size={16} strokeWidth={1.7} className="text-[#8F8F98]" />
+                            <span className="text-xs sm:text-sm font-bold uppercase tracking-[0.04em] text-white">
+                                {current.author}
+                            </span>
+                        </div>
                     </div>
                 </div>
-                <button onClick={goNext} className="shrink-0 text-[#A0A0A8] hover:text-white">
-                    <ChevronRight className="w-7 h-7 sm:w-8 sm:h-8" />
+
+                <button
+                    onClick={goNext}
+                    aria-label="Siguiente testimonio"
+                    className="shrink-0 flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 border border-white/[0.12] text-[#8F8F98] transition-colors duration-300 hover:border-[#C9A227]/40 hover:text-[#C9A227]"
+                >
+                    <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5" strokeWidth={1.7} />
                 </button>
             </div>
+
         </div>
     </section>
     );

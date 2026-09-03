@@ -1,5 +1,7 @@
 import { useState } from "react";
-import { Play, Package, Wrench, Truck, CheckCircle, ArrowRight, X } from "lucide-react";
+import { Play, Package, Wrench, Truck, CheckCircle, X } from "lucide-react";
+import operationVideo from "../assets/operation_video.mp4";
+import operation_image from "../assets/operation_image.png";
 
 const steps = [
   { icon: Package, label: "INVENTARIO" },
@@ -12,37 +14,49 @@ function OperationProcess() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
-    <section className="bg-[#0A0A0C] px-6 py-16">
-      <div className="max-w-[1280px] mx-auto">
-        <p className="text-sm font-bold text-[#F3C969] text-center">OPERACIÓN RELOJ SUIZO</p>
-        <h2 className="mt-2 text-3xl font-black uppercase text-center">
-          UNA OPERACIÓN DISEÑADA PARA RESPONDER A TIEMPO
-        </h2>
+    <section className="bg-[#0A0A0C] px-5 sm:px-6 py-10 sm:py-14 lg:py-16">
+      <div className="max-w-[1100px] mx-auto">
 
-        <div className="mt-10 relative rounded-xl overflow-hidden aspect-video bg-[#1A1A1D] flex items-center justify-center">
+        {/* Encabezado */}
+        <div className="max-w-2xl mb-8 sm:mb-10">
+          <div className="flex items-center gap-3 mb-4">
+            <span className="w-10 h-[2px] bg-[#C9A227]" />
+            <span className="text-[10px] sm:text-xs font-bold tracking-[0.18em] text-[#C9A227]">
+              ASÍ OPERAMOS
+            </span>
+          </div>
+
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black uppercase tracking-[-0.02em] leading-[0.95] text-white">
+            DE LA BODEGA A <span className="text-[#C9A227]">TU NEGOCIO</span>
+          </h2>
+        </div>
+
+        {/* Video */}
+        <div className="relative rounded-sm overflow-hidden aspect-video bg-[#0D0D10] border border-white/[0.08] flex items-center justify-center">
           <img
-            src="https://images.unsplash.com/photo-1553413077-190dd305871c?w=1200&q=80"
+            src={operation_image}
             alt="Operación Autovenz"
             className="w-full h-full object-cover"
           />
           <button
             onClick={() => setIsModalOpen(true)}
-            className="absolute inset-0 m-auto w-16 h-16 rounded-full bg-white/90 flex items-center justify-center hover:bg-white"
+            className="absolute inset-0 m-auto w-12 h-12 sm:w-14 sm:h-14 rounded-sm bg-[#0A0A0C]/70 border border-[#C9A227]/40 flex items-center justify-center backdrop-blur-sm transition-colors duration-300 hover:border-[#C9A227] hover:bg-[#0A0A0C]/90"
           >
-            <Play size={24} className="text-black ml-1" fill="black" />
+            <Play size={18} className="text-[#C9A227] ml-0.5" fill="currentColor" />
           </button>
         </div>
 
-        <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
-          {steps.map((step, index) => (
-            <div key={step.label} className="flex items-center gap-4">
-              <div className="flex flex-col items-center gap-2">
-                <step.icon size={24} className="text-[#8B5CF6]" />
-                <span className="text-sm font-bold">{step.label}</span>
+        {/* Pasos de operación */}
+        <div className="mt-10 sm:mt-14 grid grid-cols-2 sm:grid-cols-4 gap-y-10 sm:gap-x-6">
+          {steps.map((step) => (
+            <div key={step.label} className="flex flex-col items-center text-center gap-3">
+              <div className="relative flex items-center justify-center">
+                <span className="absolute -bottom-1 w-5 h-[2px] bg-[#5B108B]" />
+                <step.icon size={26} strokeWidth={1.5} className="text-[#C9A227]" />
               </div>
-              {index < steps.length - 1 && (
-                <ArrowRight className="text-[#2E2E33]" size={20} />
-              )}
+              <span className="text-xs sm:text-sm font-bold uppercase tracking-[0.06em] text-white">
+                {step.label}
+              </span>
             </div>
           ))}
         </div>
@@ -57,9 +71,13 @@ function OperationProcess() {
             <X size={32} />
           </button>
 
-          <div className="w-full max-w-3xl aspect-video bg-[#1A1A1D] rounded-xl flex items-center justify-center">
-            {/* TODO: reemplazar por <video> o <iframe> cuando exista el video real */}
-            <p className="text-[#A0A0A8]">Video próximamente</p>
+          <div className="w-full max-w-3xl max-h-[85vh] bg-[#0D0D10] border border-white/[0.08] rounded-sm overflow-hidden flex items-center justify-center">
+            <video
+              src={operationVideo}
+              controls
+              autoPlay
+              className="w-full h-full max-h-[85vh] object-contain"
+            />
           </div>
         </div>
       )}

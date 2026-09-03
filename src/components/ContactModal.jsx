@@ -32,25 +32,32 @@ Teléfono: ${form.phone}`;
     closeModal();
   };
 
+  const inputClass =
+    "h-[45px] bg-[#0A0A0C] border border-[#2E2E33] rounded-sm px-4 text-sm text-white placeholder:text-[#8F8F98] focus:outline-none focus:border-[#5B108B] transition-colors duration-200";
+
   return (
-    <div className="fixed inset-0 z-[100] bg-black/90 flex items-center justify-center px-6">
-      <div className="w-full max-w-md bg-[#1A1A1D] border border-[#2E2E33] rounded-xl p-6 relative">
+    <div className="fixed inset-0 z-[100] bg-black/90 flex items-center justify-center px-5 sm:px-6 py-8">
+      <div className="w-full max-w-md max-h-full overflow-y-auto bg-[#121214] border border-white/[0.08] rounded-sm p-6 sm:p-7 relative shadow-[0_8px_30px_rgba(0,0,0,0.5)]">
+        {/* Acento dorado */}
+        <span className="absolute top-0 left-0 w-10 h-[2px] bg-[#C9A227]" />
+
         <button
           onClick={closeModal}
-          className="absolute top-4 right-4 text-[#A0A0A8] hover:text-white"
+          className="absolute top-4 right-4 sm:top-5 sm:right-5 text-[#A0A0A8] hover:text-white transition-colors"
           aria-label="Cerrar formulario"
         >
-          <X size={24} />
+          <X size={20} strokeWidth={1.8} />
         </button>
 
-        <h3 className="text-xl font-black uppercase">
-          Activa tu <span className="text-[#8B5CF6]">descuento</span>
+        <h3 className="pr-8 text-xl sm:text-2xl font-black uppercase tracking-[-0.01em]">
+          <span className="text-white">Activa tu </span>
+          <span className="text-[#C9A227]">descuento</span>
         </h3>
-        <p className="mt-2 text-sm text-[#A0A0A8]">
+        <p className="mt-2 text-xs sm:text-sm leading-5 text-[#A0A0A8]">
           Cuéntanos un poco de tu negocio y te llevamos directo a WhatsApp con tu asesor.
         </p>
 
-        <form onSubmit={handleSubmit} className="mt-6 flex flex-col gap-4">
+        <form onSubmit={handleSubmit} className="mt-6 flex flex-col gap-3">
           <input
             type="text"
             name="name"
@@ -58,7 +65,7 @@ Teléfono: ${form.phone}`;
             onChange={handleChange}
             placeholder="Nombre completo"
             required
-            className="bg-[#0A0A0C] border border-[#2E2E33] rounded-lg px-4 py-3 text-sm placeholder:text-[#A0A0A8] focus:outline-none focus:border-[#8B5CF6]"
+            className={inputClass}
           />
           <input
             type="text"
@@ -67,7 +74,7 @@ Teléfono: ${form.phone}`;
             onChange={handleChange}
             placeholder="Nombre del taller o almacén"
             required
-            className="bg-[#0A0A0C] border border-[#2E2E33] rounded-lg px-4 py-3 text-sm placeholder:text-[#A0A0A8] focus:outline-none focus:border-[#8B5CF6]"
+            className={inputClass}
           />
           <input
             type="text"
@@ -76,7 +83,7 @@ Teléfono: ${form.phone}`;
             onChange={handleChange}
             placeholder="Ciudad"
             required
-            className="bg-[#0A0A0C] border border-[#2E2E33] rounded-lg px-4 py-3 text-sm placeholder:text-[#A0A0A8] focus:outline-none focus:border-[#8B5CF6]"
+            className={inputClass}
           />
           <input
             type="tel"
@@ -85,15 +92,19 @@ Teléfono: ${form.phone}`;
             onChange={handleChange}
             placeholder="Teléfono"
             required
-            className="bg-[#0A0A0C] border border-[#2E2E33] rounded-lg px-4 py-3 text-sm placeholder:text-[#A0A0A8] focus:outline-none focus:border-[#8B5CF6]"
+            className={inputClass}
           />
 
           <button
             type="submit"
-            className="mt-2 bg-[#6D28D9] text-white font-bold px-6 py-3 rounded-full hover:bg-[#8B5CF6]"
+            className="mt-2 h-[48px] bg-[#5B108B] text-white font-bold text-sm rounded-full transition-colors duration-200 hover:bg-[#7113AA]"
           >
             CONTINUAR A WHATSAPP
           </button>
+
+          <p className="text-[11px] text-center text-[#8F8F98]">
+            Tu información será utilizada únicamente para gestionar tu solicitud.
+          </p>
         </form>
       </div>
     </div>

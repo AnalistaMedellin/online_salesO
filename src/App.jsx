@@ -1,8 +1,9 @@
 import Header from "./components/Header";
 import Hero from "./components/Hero";
+import FeatureStrip from "./components/FeatureStrip";
 import Discounts from "./components/Discounts";
 import Benefits from "./components/Benefits";
-import VipVideo from "./components/VipVideo";
+import CompanyVideo from "./components/CompanyVideo";
 import Testimonials from "./components/Testimonials";
 import ChannelFeatures from "./components/ChannelFeatures";
 import OperationProcess from "./components/OperationProcess";
@@ -18,9 +19,10 @@ function App() {
     <ContactModalProvider>
       <Header />
       <Hero />
+      <FeatureStrip />
       <Discounts />
       <Benefits />
-      <VipVideo />
+      <CompanyVideo />
       <Testimonials />
       <ChannelFeatures />
       <OperationProcess />
