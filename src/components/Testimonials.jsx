@@ -15,7 +15,7 @@ const testimonials = [
     },
     {
         quote: "La atención por WhatsApp es ágil. Mi asesor me avisa de las ofertas relámpago y me ayuda a armar el pedido que mejor le conviene a mi mostrador. Es un proveedor que se preocupa por mi rentabilidad.",
-        author: "Taller Mecánico",
+        author: "Almacén de Autopartes",
     },
 ];
 

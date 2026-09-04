@@ -1,6 +1,6 @@
 # Landing B2B — Canal Digital Autovenz
 
-Landing page para captar talleres, almacenes automotrices y flotas, y convertirlos en clientes del canal de venta digital corporativo de Autovenz.
+Landing page para captar almacenes automotrices y flotas, y convertirlos en clientes del canal de venta digital corporativo de Autovenz.
 
 ## Stack
 

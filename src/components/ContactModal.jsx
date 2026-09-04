@@ -72,7 +72,7 @@ Teléfono: ${form.phone}`;
             name="business"
             value={form.business}
             onChange={handleChange}
-            placeholder="Nombre del taller o almacén"
+            placeholder="Nombre del almacén o negocio"
             required
             className={inputClass}
           />

@@ -60,7 +60,7 @@ function Hero() {
 
                             <p className="mt-7 max-w-[650px] text-sm sm:text-base leading-7 text-white/90">
                                 Activa tu cuenta en el nuevo canal de venta corporativa de Autovenz. Asegura inventario
-                                para tu taller o almacén, con despacho prioritario y beneficios exclusivos para la
+                                para tu almacén, con despacho prioritario y beneficios exclusivos para la
                                 <span className="text-[#C9A227] font-semibold"> Comunidad VIP.</span>
                             </p>
 
