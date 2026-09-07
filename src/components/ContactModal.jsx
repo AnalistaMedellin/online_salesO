@@ -3,7 +3,21 @@ import { X } from "lucide-react";
 import { useContactModal } from "../context/ContactModalContext";
 import { WHATSAPP_NUMBER, WHATSAPP_MESSAGE } from "../config";
 
-const initialForm = { name: "", business: "", city: "", phone: "" };
+const initialForm = { name: "", business: "", city: "", phone: "", purchaseVolume: "", productQuantity: "" };
+
+const purchaseVolumeOptions = [
+  "Menos de $800.000",
+  "$800.000 - $1.200.000",
+  "$1.200.000 - $3.000.000",
+  "Más de $3.000.000",
+];
+
+const productQuantityOptions = [
+  "1 - 10 unidades",
+  "11 - 50 unidades",
+  "51 - 100 unidades",
+  "Más de 100 unidades",
+];
 
 function ContactModal() {
   const { isOpen, closeModal } = useContactModal();
@@ -23,7 +37,9 @@ function ContactModal() {
 Nombre: ${form.name}
 Negocio: ${form.business}
 Ciudad: ${form.city}
-Teléfono: ${form.phone}`;
+Teléfono: ${form.phone}
+Compra mensual aproximada: ${form.purchaseVolume}
+Cantidad de productos por pedido: ${form.productQuantity}`;
 
     const whatsappLink = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
     window.open(whatsappLink, "_blank");
@@ -34,6 +50,8 @@ Teléfono: ${form.phone}`;
 
   const inputClass =
     "h-[45px] bg-[#0A0A0C] border border-[#2E2E33] rounded-sm px-4 text-sm text-white placeholder:text-[#8F8F98] focus:outline-none focus:border-[#5B108B] transition-colors duration-200";
+
+  const selectClass = `${inputClass} appearance-none bg-no-repeat bg-[right_1rem_center] bg-[length:12px] bg-[url('data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%238F8F98%22%20stroke-width%3D%222%22%3E%3Cpolyline%20points%3D%226%209%2012%2015%2018%209%22%2F%3E%3C%2Fsvg%3E')]`;
 
   return (
     <div className="fixed inset-0 z-[100] bg-black/90 flex items-center justify-center px-5 sm:px-6 py-8">
@@ -94,6 +112,30 @@ Teléfono: ${form.phone}`;
             required
             className={inputClass}
           />
+          <select
+            name="purchaseVolume"
+            value={form.purchaseVolume}
+            onChange={handleChange}
+            required
+            className={selectClass}
+          >
+            <option value="" disabled>¿Cuánto compras en repuestos al mes?</option>
+            {purchaseVolumeOptions.map((option) => (
+              <option key={option} value={option}>{option}</option>
+            ))}
+          </select>
+          <select
+            name="productQuantity"
+            value={form.productQuantity}
+            onChange={handleChange}
+            required
+            className={selectClass}
+          >
+            <option value="" disabled>¿Cuántos productos manejas por pedido?</option>
+            {productQuantityOptions.map((option) => (
+              <option key={option} value={option}>{option}</option>
+            ))}
+          </select>
 
           <button
             type="submit"
