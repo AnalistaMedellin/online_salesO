@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { X } from "lucide-react";
 import { useContactModal } from "../context/ContactModalContext";
-import { WHATSAPP_NUMBER, WHATSAPP_MESSAGE } from "../config";
+import { WHATSAPP_NUMBER, WHATSAPP_MESSAGE, GOOGLE_SHEETS_WEBHOOK_URL } from "../config";
 
 const initialForm = { name: "", business: "", city: "", phone: "", purchaseVolume: "", productQuantity: "" };
 
@@ -45,6 +45,13 @@ Cantidad de productos por pedido: ${form.productQuantity}`;
 
     const whatsappLink = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
     sessionStorage.setItem("pendingWhatsappLink", whatsappLink);
+
+    fetch(GOOGLE_SHEETS_WEBHOOK_URL, {
+      method: "POST",
+      mode: "no-cors",
+      headers: { "Content-Type": "text/plain;charset=utf-8" },
+      body: JSON.stringify(form),
+    }).catch(() => {});
 
     setForm(initialForm);
     closeModal();
