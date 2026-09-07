@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { X } from "lucide-react";
 import { useContactModal } from "../context/ContactModalContext";
 import { WHATSAPP_NUMBER, WHATSAPP_MESSAGE } from "../config";
@@ -22,6 +23,7 @@ const productQuantityOptions = [
 function ContactModal() {
   const { isOpen, closeModal } = useContactModal();
   const [form, setForm] = useState(initialForm);
+  const navigate = useNavigate();
 
   if (!isOpen) return null;
 
@@ -42,10 +44,11 @@ Compra mensual aproximada: ${form.purchaseVolume}
 Cantidad de productos por pedido: ${form.productQuantity}`;
 
     const whatsappLink = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
-    window.open(whatsappLink, "_blank");
+    sessionStorage.setItem("pendingWhatsappLink", whatsappLink);
 
     setForm(initialForm);
     closeModal();
+    navigate("/gracias");
   };
 
   const inputClass =
