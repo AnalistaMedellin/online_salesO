@@ -20,6 +20,16 @@ const productQuantityOptions = [
   "Más de 100 unidades",
 ];
 
+function getLeadQualification(purchaseVolume, productQuantity) {
+  const volumeScore = purchaseVolumeOptions.indexOf(purchaseVolume);
+  const quantityScore = productQuantityOptions.indexOf(productQuantity);
+  const totalScore = volumeScore + quantityScore;
+
+  if (totalScore >= 5) return "Alto";
+  if (totalScore >= 2) return "Medio";
+  return "Bajo";
+}
+
 function ContactModal() {
   const { isOpen, closeModal } = useContactModal();
   const [form, setForm] = useState(initialForm);
@@ -34,6 +44,8 @@ function ContactModal() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    const qualification = getLeadQualification(form.purchaseVolume, form.productQuantity);
+
     const message = `${WHATSAPP_MESSAGE}
 
 Nombre: ${form.name}
@@ -41,7 +53,8 @@ Negocio: ${form.business}
 Ciudad: ${form.city}
 Teléfono: ${form.phone}
 Compra mensual aproximada: ${form.purchaseVolume}
-Cantidad de productos por pedido: ${form.productQuantity}`;
+Cantidad de productos por pedido: ${form.productQuantity}
+Calificación del lead: ${qualification}`;
 
     const whatsappLink = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
     sessionStorage.setItem("pendingWhatsappLink", whatsappLink);
@@ -50,7 +63,7 @@ Cantidad de productos por pedido: ${form.productQuantity}`;
       method: "POST",
       mode: "no-cors",
       headers: { "Content-Type": "text/plain;charset=utf-8" },
-      body: JSON.stringify(form),
+      body: JSON.stringify({ ...form, qualification }),
     }).catch(() => {});
 
     setForm(initialForm);
