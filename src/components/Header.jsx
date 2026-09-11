@@ -52,7 +52,7 @@ function Header() {
                     <div className="flex items-center gap-3">
                         <button
                             onClick={openModal}
-                            className="group flex items-center gap-2 bg-[#5B108B] hover:bg-[#7113AA] text-white text-[11px] sm:text-xs font-bold tracking-[0.05em] px-4 sm:px-5 py-2.5 sm:py-3 rounded-md transition-all duration-200 shadow-[0_0_20px_rgba(91,16,139,0.2)] hover:shadow-[0_0_25px_rgba(91,16,139,0.4)]"
+                            className="group flex items-center gap-2 bg-[#25D366] hover:bg-[#075E54] text-white text-[11px] sm:text-xs font-bold tracking-[0.05em] px-4 sm:px-5 py-2.5 sm:py-3 rounded-md transition-all duration-200 shadow-[0_0_20px_rgba(91,16,139,0.2)] hover:shadow-[0_0_25px_rgba(91,16,139,0.4)]"
                         >
                             <WhatsAppIcon
                                 className="w-[17px] h-[17px] transition-transform duration-200 group-hover:scale-110"
@@ -65,7 +65,7 @@ function Header() {
                         {/* Mobile menu */}
                         <button
                             onClick={() => setIsMenuOpen(!isMenuOpen)}
-                            className="lg:hidden flex items-center justify-center w-10 h-10 text-white border border-white/[0.08] rounded-md hover:border-[#5B108B] transition-colors"
+                            className="lg:hidden flex items-center justify-center w-10 h-10 text-white border border-white/[0.08] rounded-md hover:border-[#075E54] transition-colors"
                             aria-label={isMenuOpen ? "Cerrar menú" : "Abrir menú"}
                             aria-expanded={isMenuOpen}
                         >
