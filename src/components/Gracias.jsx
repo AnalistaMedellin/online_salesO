@@ -1,17 +1,21 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { CheckCircle } from "lucide-react";
+import WhatsAppIcon from "./icons/WhatsAppIcon";
 
 function Gracias() {
   const navigate = useNavigate();
+  const [whatsappLink, setWhatsappLink] = useState(null);
 
   useEffect(() => {
-    const whatsappLink = sessionStorage.getItem("pendingWhatsappLink");
+    const link = sessionStorage.getItem("pendingWhatsappLink");
 
-    if (!whatsappLink) {
+    if (!link) {
       navigate("/", { replace: true });
       return;
     }
+
+    setWhatsappLink(link);
 
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push({
@@ -19,14 +23,11 @@ function Gracias() {
       pagePath: "/gracias",
       pageTitle: "Gracias - Lead generado",
     });
-
-    const timer = setTimeout(() => {
-      sessionStorage.removeItem("pendingWhatsappLink");
-      window.location.href = whatsappLink;
-    }, 1500);
-
-    return () => clearTimeout(timer);
   }, [navigate]);
+
+  const handleWhatsappClick = () => {
+    sessionStorage.removeItem("pendingWhatsappLink");
+  };
 
   return (
     <section className="min-h-screen bg-[#0A0A0C] flex items-center justify-center px-6 text-center">
@@ -39,10 +40,21 @@ function Gracias() {
           ¡Gracias por tu <span className="text-[#C9A227]">solicitud</span>!
         </h1>
         <p className="mt-3 text-sm sm:text-base text-[#A0A0A8]">
-          Te estamos redirigiendo a WhatsApp con tu asesor corporativo...
+          Continúa la conversación con tu asesor corporativo en WhatsApp.
         </p>
 
-        <div className="mt-6 w-6 h-6 mx-auto border-2 border-[#5B108B] border-t-transparent rounded-full animate-spin" />
+        {whatsappLink && (
+          <a
+            href={whatsappLink}
+            onClick={handleWhatsappClick}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-8 inline-flex items-center gap-2 bg-[#25D366] text-[#0A0A0C] font-bold uppercase text-sm px-6 py-3 rounded-sm hover:opacity-90 transition-opacity"
+          >
+            <WhatsAppIcon className="w-5 h-5" />
+            Ir a WhatsApp
+          </a>
+        )}
       </div>
     </section>
   );
