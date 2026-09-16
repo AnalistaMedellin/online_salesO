@@ -33,6 +33,7 @@ function getLeadQualification(purchaseVolume, productQuantity) {
 function ContactModal() {
   const { isOpen, closeModal } = useContactModal();
   const [form, setForm] = useState(initialForm);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const navigate = useNavigate();
 
   if (!isOpen) return null;
@@ -43,6 +44,9 @@ function ContactModal() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    if (isSubmitting) return;
+    setIsSubmitting(true);
 
     const qualification = getLeadQualification(form.purchaseVolume, form.productQuantity);
 
@@ -59,6 +63,12 @@ Calificación del lead: ${qualification}`;
     const whatsappLink = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
     sessionStorage.setItem("pendingWhatsappLink", whatsappLink);
 
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: "leadFormSubmit",
+      leadQualification: qualification,
+    });
+
     fetch(GOOGLE_SHEETS_WEBHOOK_URL, {
       method: "POST",
       mode: "no-cors",
@@ -67,8 +77,12 @@ Calificación del lead: ${qualification}`;
     }).catch(() => {});
 
     setForm(initialForm);
-    closeModal();
-    navigate("/gracias");
+
+    setTimeout(() => {
+      setIsSubmitting(false);
+      closeModal();
+      navigate("/gracias");
+    }, 1800);
   };
 
   const inputClass =
@@ -162,9 +176,10 @@ Calificación del lead: ${qualification}`;
 
           <button
             type="submit"
-            className="mt-2 h-[48px] bg-[#5B108B] text-white font-bold text-sm rounded-full transition-colors duration-200 hover:bg-[#7113AA]"
+            disabled={isSubmitting}
+            className="mt-2 h-[48px] bg-[#5B108B] text-white font-bold text-sm rounded-full transition-colors duration-200 hover:bg-[#7113AA] disabled:opacity-70 disabled:cursor-not-allowed"
           >
-            CONTINUAR A WHATSAPP
+            {isSubmitting ? "ENVIANDO..." : "CONTINUAR A WHATSAPP"}
           </button>
 
           <p className="text-[11px] text-center text-[#8F8F98]">
