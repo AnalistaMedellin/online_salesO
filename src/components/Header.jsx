@@ -52,7 +52,7 @@ function Header() {
                     <div className="flex items-center gap-3">
                         <button
                             onClick={openModal}
-                            className="group flex items-center gap-2 bg-[#25D366] hover:bg-[#075E54] text-white text-[11px] sm:text-xs font-bold tracking-[0.05em] px-4 sm:px-5 py-2.5 sm:py-3 rounded-md transition-all duration-200 shadow-[0_0_20px_rgba(91,16,139,0.2)] hover:shadow-[0_0_25px_rgba(91,16,139,0.4)]"
+                            className="group flex items-center gap-2 bg-[#128c7e] hover:bg-[#075E54] text-white text-[11px] sm:text-xs font-bold tracking-[0.05em] px-4 sm:px-5 py-2.5 sm:py-3 rounded-md transition-all duration-200 shadow-[0_0_20px_rgba(91,16,139,0.2)] hover:shadow-[0_0_25px_rgba(91,16,139,0.4)]"
                         >
                             <WhatsAppIcon
                                 className="w-[17px] h-[17px] transition-transform duration-200 group-hover:scale-110"
