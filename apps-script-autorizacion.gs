@@ -1,10 +1,12 @@
+const SPREADSHEET_ID = "1FvnQS7DXlptURcl7LVQ441tpTN6kKbjyFKdPjUBL2ko";
+
 function doPost(e) {
   try {
     const data = JSON.parse(e.postData.contents);
 
+    const spreadsheet = SpreadsheetApp.openById(SPREADSHEET_ID);
     const sheet =
-      SpreadsheetApp.getActiveSpreadsheet().getSheetByName("Autorizaciones") ||
-      SpreadsheetApp.getActiveSpreadsheet().insertSheet("Autorizaciones");
+      spreadsheet.getSheetByName("Autorizaciones") || spreadsheet.insertSheet("Autorizaciones");
 
     if (sheet.getLastRow() === 0) {
       sheet.appendRow([
