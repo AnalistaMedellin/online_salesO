@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { CheckCircle } from "lucide-react";
-import { GOOGLE_SHEETS_AUTORIZACION_WEBHOOK_URL } from "../config";
+import { GOOGLE_SHEETS_AUTORIZACION_WEBHOOK_URL, WHATSAPP_NUMBER } from "../config";
 
 const initialForm = {
   nombre: "",
@@ -35,8 +35,21 @@ function AutorizacionDatos() {
       console.error("No se pudo registrar la autorización en Sheets:", error);
     });
 
-    setIsSubmitting(false);
     setIsSubmitted(true);
+
+    let message = `He aceptado la autorización para consulta y reporte ante operadores de información financiera y crediticia.
+
+Nombre / Razón social: ${form.nombre}
+C.C. / NIT: ${form.documento}`;
+
+    if (form.esRepresentanteLegal) {
+      message += `
+Representante legal: ${form.representanteNombre}
+C.C. representante legal: ${form.representanteDocumento}`;
+    }
+
+    const whatsappLink = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+    window.location.href = whatsappLink;
   };
 
   const inputClass =
@@ -107,7 +120,7 @@ function AutorizacionDatos() {
               Autorización <span className="text-[#C9A227]">registrada</span>
             </h2>
             <p className="mt-2 text-sm text-[#A0A0A8]">
-              Gracias, hemos registrado tu autorización. Puedes continuar la conversación con tu asesor en WhatsApp.
+              Gracias, hemos registrado tu autorización. Te estamos redirigiendo a WhatsApp con tu asesor...
             </p>
           </div>
         ) : (
