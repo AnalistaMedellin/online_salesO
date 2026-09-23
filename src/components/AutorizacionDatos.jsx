@@ -73,41 +73,72 @@ C.C. representante legal: ${form.representanteDocumento}`;
         </p>
 
         <div className="mt-6 border border-white/[0.08] rounded-sm p-5 sm:p-6 space-y-4 text-xs sm:text-sm leading-6 text-[#A0A0A8]">
-          <p>
-            El abajo firmante, actuando en nombre propio o como representante legal de la persona jurídica
-            identificada, manifiesta que la información suministrada a AUTOVENZ S.A.S. es verídica, completa y
-            actualizada, y de manera libre, previa, expresa e informada autoriza a AUTOVENZ S.A.S. para:
+          <p className="text-white font-bold text-center uppercase">
+            Autorización para Consulta y Reporte
+            <br />
+            ante Operadores de Información Financiera y Crediticia
           </p>
 
           <p>
-            <span className="text-white font-bold">1. CONSULTA:</span> consultar ante DataCrédito Experian y/o
-            cualquier otro operador de información financiera, crediticia o comercial legalmente autorizado, el
-            comportamiento financiero, crediticio y comercial del titular, exclusivamente para el análisis y
-            administración del riesgo crediticio de esta relación comercial.
+            Con el propósito de realizar el estudio de crédito y, en su caso, establecer, desarrollar y mantener
+            una relación comercial con AUTOVENZ S.A.S., solicitamos la siguiente autorización:
+          </p>
+
+          <p className="text-white font-bold">AUTORIZACIÓN</p>
+
+          <p>
+            El abajo firmante, actuando en nombre propio o en calidad de representante legal de la persona
+            jurídica identificada en esta autorización, manifiesta que la información suministrada a AUTOVENZ
+            S.A.S. es veraz, completa y actualizada y, de manera libre, previa, expresa e informada, autoriza a
+            AUTOVENZ S.A.S., NIT 901.149.777-3, para:
           </p>
 
           <p>
-            <span className="text-white font-bold">2. REPORTE:</span> reportar, actualizar, rectificar y, cuando
-            corresponda, retirar ante dichos operadores la información sobre el nacimiento, modificación,
-            cumplimiento, incumplimiento, mora, estado y extinción de las obligaciones comerciales con AUTOVENZ
-            S.A.S., incluyendo información positiva y negativa.
+            <span className="text-white font-bold">1. CONSULTA DE INFORMACIÓN</span>
+            <br />
+            Consultar ante DataCrédito Experian y/o cualquier otro operador de información financiera, crediticia,
+            comercial o de servicios legalmente autorizado, la información relacionada con el comportamiento
+            financiero, crediticio y comercial del titular, exclusivamente para efectos del análisis y
+            administración del riesgo crediticio derivado de la relación comercial con AUTOVENZ S.A.S.
           </p>
 
           <p>
-            <span className="text-white font-bold">3. VERACIDAD:</span> AUTOVENZ S.A.S. procurará que la
-            información suministrada a los operadores sea veraz, completa, exacta, actualizada y comprobable, y
-            realizará las actualizaciones o rectificaciones que legalmente correspondan.
+            <span className="text-white font-bold">2. REPORTE DE INFORMACIÓN</span>
+            <br />
+            Reportar, actualizar, rectificar y, cuando legalmente corresponda, retirar ante dichos operadores la
+            información relacionada con el nacimiento, modificación, cumplimiento, incumplimiento, mora, estado y
+            extinción de las obligaciones comerciales adquiridas con AUTOVENZ S.A.S., incluyendo información
+            positiva y negativa, de conformidad con la legislación aplicable.
           </p>
 
           <p>
-            <span className="text-white font-bold">4. REPORTE NEGATIVO:</span> esta autorización NO constituye por
-            sí sola un reporte negativo. Si en el futuro corresponde reportar información negativa, AUTOVENZ S.A.S.
-            lo comunicará previamente conforme a la ley.
+            <span className="text-white font-bold">3. ACTUALIZACIÓN Y VERACIDAD</span>
+            <br />
+            AUTOVENZ S.A.S. procurará que la información suministrada a los operadores sea veraz, completa, exacta,
+            actualizada y comprobable, y realizará las actualizaciones o rectificaciones que legalmente
+            correspondan.
           </p>
 
           <p>
-            <span className="text-white font-bold">5. SUS DERECHOS:</span> usted puede conocer, consultar,
-            actualizar y rectificar en cualquier momento la información reportada.
+            <span className="text-white font-bold">4. REPORTE NEGATIVO</span>
+            <br />
+            La presente autorización no constituye por sí sola un reporte negativo. Cuando legalmente corresponda
+            efectuar un reporte de información negativa, AUTOVENZ S.A.S. realizará previamente las comunicaciones
+            y cumplirá los términos, condiciones y procedimientos establecidos en la legislación vigente.
+          </p>
+
+          <p>
+            <span className="text-white font-bold">5. DERECHOS DEL TITULAR</span>
+            <br />
+            El titular podrá ejercer los derechos que le reconoce la legislación aplicable en materia de hábeas
+            data, incluyendo conocer, consultar, actualizar y rectificar la información relacionada con sus
+            obligaciones, así como presentar consultas o reclamos respecto de la información reportada.
+          </p>
+
+          <p>
+            La presente autorización se entiende otorgada para las finalidades anteriormente descritas y durante
+            el tiempo en que exista o pueda derivarse una relación comercial u obligación con AUTOVENZ S.A.S.,
+            dentro de los límites establecidos por la legislación colombiana.
           </p>
         </div>
 
