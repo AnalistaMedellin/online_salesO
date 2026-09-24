@@ -57,8 +57,7 @@ Negocio: ${form.business}
 Ciudad: ${form.city}
 Teléfono: ${form.phone}
 Compra mensual aproximada: ${form.purchaseVolume}
-Cantidad de productos por pedido: ${form.productQuantity}
-Calificación del lead: ${qualification}`;
+Cantidad de productos por pedido: ${form.productQuantity}`;
 
     const whatsappLink = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
     sessionStorage.setItem("pendingWhatsappLink", whatsappLink);
