@@ -141,6 +141,19 @@ C.C. representante legal: ${form.representanteDocumento}`;
             el tiempo en que exista o pueda derivarse una relación comercial u obligación con AUTOVENZ S.A.S.,
             dentro de los límites establecidos por la legislación colombiana.
           </p>
+
+          <p>
+            Para más información sobre cómo tratamos sus datos personales, consulte nuestra{" "}
+            <a
+              href="https://autovenz.com/politica-de-privacidad/?lang=es"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[#C9A227] underline hover:text-[#E0B830]"
+            >
+              Política de Tratamiento de Datos Personales
+            </a>
+            .
+          </p>
         </div>
 
         {isSubmitted ? (
