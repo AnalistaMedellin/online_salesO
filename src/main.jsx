@@ -6,6 +6,9 @@ import App from './App.jsx'
 import Gracias from './components/Gracias.jsx'
 import AutorizacionDatos from './components/AutorizacionDatos.jsx'
 import PoliticaTratamientoDatos from './components/PoliticaTratamientoDatos.jsx'
+import { captureUtm } from './utils/utm.js';
+
+captureUtm();
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -19,3 +22,5 @@ createRoot(document.getElementById('root')).render(
     </BrowserRouter>
   </StrictMode>,
 )
+
+

@@ -4,6 +4,7 @@ import { X } from "lucide-react";
 import { useContactModal } from "../context/ContactModalContext";
 import { WHATSAPP_NUMBER, WHATSAPP_MESSAGE, GOOGLE_SHEETS_WEBHOOK_URL, DATA_POLICY_VERSION } from "../config";
 import CityCombobox from "./CityCombobox";
+import { getUtm } from "../utils/utm.js";
 
 const initialForm = {
   name: "",
@@ -13,7 +14,6 @@ const initialForm = {
   phone: "",
   purchaseVolume: "",
   productQuantity: "",
-  callTime: "",
 };
 
 const purchaseVolumeOptions = [
@@ -29,8 +29,6 @@ const productQuantityOptions = [
   "51 - 100 unidades",
   "Más de 100 unidades",
 ];
-
-const callTimeOptions = ["Mañana (8:00 a. m. - 12:00 m.)", "Tarde (1:00 p. m. - 5:30 p. m.)"];
 
 function cleanPhone(raw) {
   let digits = raw.replace(/\D/g, "");
@@ -93,6 +91,10 @@ function ContactModal() {
     setIsSubmitting(true);
 
     const qualification = getLeadQualification(form.purchaseVolume, form.productQuantity);
+    const leadId =
+      typeof crypto !== "undefined" && crypto.randomUUID
+        ? crypto.randomUUID()
+        : `${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 8)}`;
 
     const message = `${WHATSAPP_MESSAGE}
 
@@ -118,8 +120,10 @@ Cantidad de productos por pedido: ${form.productQuantity}`;
       keepalive: true,
       headers: { "Content-Type": "text/plain;charset=utf-8" },
       body: JSON.stringify({
+        leadId,
         ...form,
         phone,
+        ...getUtm(),
         qualification,
         aceptaTratamientoDatos: acceptDataPolicy,
         aceptaComunicacionesComerciales: acceptMarketing,
@@ -234,17 +238,6 @@ Cantidad de productos por pedido: ${form.productQuantity}`;
           >
             <option value="" disabled>¿Cuántos productos manejas por pedido?</option>
             {productQuantityOptions.map((option) => (
-              <option key={option} value={option}>{option}</option>
-            ))}
-          </select>
-          <select
-            name="callTime"
-            value={form.callTime}
-            onChange={handleChange}
-            className={selectClass}
-          >
-            <option value="">¿En qué horario prefieres que te llamemos? (opcional)</option>
-            {callTimeOptions.map((option) => (
               <option key={option} value={option}>{option}</option>
             ))}
           </select>
