@@ -30,7 +30,7 @@ const productQuantityOptions = [
   "Más de 100 unidades",
 ];
 
-const callTimeOptions = ["Mañana", "Tarde"];
+const callTimeOptions = ["Mañana (8:00 a. m. - 12:00 m.)", "Tarde (1:00 p. m. - 5:30 p. m.)"];
 
 function cleanPhone(raw) {
   let digits = raw.replace(/\D/g, "");
