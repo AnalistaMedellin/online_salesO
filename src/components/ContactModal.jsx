@@ -13,6 +13,7 @@ const initialForm = {
   phone: "",
   purchaseVolume: "",
   productQuantity: "",
+  callTime: "",
 };
 
 const purchaseVolumeOptions = [
@@ -28,6 +29,8 @@ const productQuantityOptions = [
   "51 - 100 unidades",
   "Más de 100 unidades",
 ];
+
+const callTimeOptions = ["Mañana", "Tarde"];
 
 function cleanPhone(raw) {
   let digits = raw.replace(/\D/g, "");
@@ -231,6 +234,17 @@ Cantidad de productos por pedido: ${form.productQuantity}`;
           >
             <option value="" disabled>¿Cuántos productos manejas por pedido?</option>
             {productQuantityOptions.map((option) => (
+              <option key={option} value={option}>{option}</option>
+            ))}
+          </select>
+          <select
+            name="callTime"
+            value={form.callTime}
+            onChange={handleChange}
+            className={selectClass}
+          >
+            <option value="">¿En qué horario prefieres que te llamemos? (opcional)</option>
+            {callTimeOptions.map((option) => (
               <option key={option} value={option}>{option}</option>
             ))}
           </select>
